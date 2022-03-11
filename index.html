@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Crud</title>
+</head>
+
+<body>
+
+    <form action="index.html" onsubmit="return validation()" style="display: flex;
+                justify-content: center; 
+                align-items: center;
+                flex-direction: column;
+                padding-bottom: 10px;">
+
+        <h3> A Simple Employee CRUD Application </h3>
+
+        <div class="form-group" style="padding-bottom: 10px;">
+            Employee ID:
+            <input type="text" name="eid" id="eid" placeholder="Employee ID"> <br>
+            <span id="eids" style="color: red;"></span>
+        </div>
+
+        <div style="padding-bottom: 10px;">
+            Employee Name:
+            <input type="text" name="ename" id="ename" placeholder="Employee Name"> <br>
+            <span id="enames" style="color: red;"></span>
+        </div>
+
+        <div style="padding-bottom: 10px;">
+            Gender:
+            <input type="radio" id="genderM" name="gender" value="male" /> Male
+            <input type="radio" id="genderF" name="gender" value="female" /> Female
+            <input type="radio" id="genderO" name="gender" value="other" /> Other <br>
+            <span id="genders" style="color: red;"></span>
+        </div>
+
+        <div style="padding-bottom: 10px;">
+            Salary:
+            <input type="text" name="salary" id="salary" placeholder="Salary"> <br>
+            <span id="salarys" style="color: red;"></span>
+        </div>
+
+        <div style="padding-bottom: 10px;">
+            <input type="submit" value="Insert">
+            <input type="submit" value="Select">
+            <input type="submit" value="Update">
+            <input type="submit" value="Delete">
+            <input type="reset" value="Clear Form">
+        </div>
+
+    </form>
+
+    <hr>
+    <div class="Output">
+        <h3>Output:</h3>
+        <h4> AJAX response output goes here. </h4>
+    </div>
+
+    <script type="text/javascript">
+
+        function validation() {
+
+            console.log("In Method");
+            var id = document.getElementById("eid").value;
+            var ids = document.getElementById("eids");
+            var ename = document.getElementById("ename").value;
+            var enames = document.getElementById("enames");
+            var genderM = document.getElementById("genderM");
+            var genderF = document.getElementById("genderF");
+            var genderO = document.getElementById("genderO");
+            var genders = document.getElementById("genders");
+            var salary = document.getElementById("salary").value;
+            var salarys = document.getElementById("salarys");
+            var regex = /^[A-Za-z0-9]+$/;
+
+            if (id == "") {
+                ids.innerHTML = "Required only for Update or Delete actions";
+                return false;
+            }
+
+            if (ename == "") {
+                enames.innerHTML = "Required for Insert and Optional for other actions";
+                return false;
+            }
+
+
+            if (!genderM.checked || !genderF.checked || !genderO.checked) {
+                genders.innerHTML = "Required for Insert and Optional for other actions";
+                return false;
+            }
+
+            if (salary == "") {
+                salarys.innerHTML = "Required for Insert and Optional for other actions";
+                return false;
+            }
+
+            return true;
+        }
+
+    </script>
+
+</body>
+
+</html>
